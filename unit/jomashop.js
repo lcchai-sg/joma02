@@ -185,8 +185,7 @@ const extraction = async (context) => {
             related: []
         };
         const d = (await client.get(entry)).data;
-        if (d.match(/out of stock/i)) {
-            console.debug('out of stock', entry);
+        if (d.match(/this item is currently out of stock/i)) {
             return { ...result, code: "out of stock", };
         }
         const $ = cheerio.load(d);
